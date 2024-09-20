@@ -18,3 +18,12 @@ en el aplicativo movil.
         - asignar varios autos a clientes
 4.- Generacion de PDF
         - Generar pdf de las asignaciones.  
+
+
+*** RAMAS MASTER2 ***
+
+Dentro de esta rama se va a encontrar la aplicacion web.
+
+*** RAMA MASTER3 ***
+
+Dentro de esta rama se va a encontrar la aplicacion movil.
