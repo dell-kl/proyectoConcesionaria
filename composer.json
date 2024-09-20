@@ -1,0 +1,18 @@
+{
+    "name": "dennis.p/api-concesionaria",
+    "description": "Api concesionaria",
+    "autoload": {
+        "psr-4": {
+            "DennisP\\ApiConcesionaria\\": "src/",
+            "Models\\" : "models/"
+        }
+    },
+    "authors": [
+        {
+            "name": "dennis P"
+        }
+    ],
+    "require": {
+        "slim/slim": "3.3.0"
+    }
+}
