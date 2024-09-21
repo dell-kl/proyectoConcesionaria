@@ -111,8 +111,8 @@ use Slim\Http\UploadedFile;
                         $consulta->bindParam(9, $data['cliente_cedula']);
                         $consulta->execute();
             
+                        $cuerpo->write(json_encode(['respuesta' => "registrado exitosamente"]));
                         $response->withStatus(200);
-                        $cuerpo->write($request->getBody());
     
                     }
                 }
@@ -307,6 +307,7 @@ use Slim\Http\UploadedFile;
         global $db;
         
         $id = $request->getAttribute("id");
+        $cuerpo = $response->getBody();
 
         try {
             $registroCliente = TraerDatosCliente($db,$id);
@@ -320,13 +321,41 @@ use Slim\Http\UploadedFile;
                 $consulta->bindParam(1, $id);
                 $consulta->execute();
     
-                echo "eliminado correctamente";
+                $cuerpo->write(json_encode(['respuesta' => "usuario eliminado"]));
+                return $response->withStatus(200);
             }
+
+            $cuerpo->write(json_encode(['respuesta' => "usuario inexistente"]));
+            return $response->withStatus(404);
         } catch (PDOException $th) {
-           echo "Posiblemente no exista el registro a querer eliminar.";
+            $cuerpo->write(json_encode(['respuesta' => "error del servidor"]));
+            return $response->withStatus(500);
         }
     });
 
+
+    $app->get("/clientes/imagenes/{id}", function(Request $request, Response $response, $args) {
+        global $db;
+        $id = $request->getAttribute("id");
+        try {
+            $sql = "SELECT cliente_archivoRuta FROM Cliente WHERE cliente_id = ?";
+
+            $consulta = $db->prepare($sql);
+            $consulta->bindParam(1, $id);
+            $consulta->execute();
+            $respuesta = $consulta->fetch(PDO::FETCH_ASSOC);
+
+            if ( $respuesta )
+            {
+                header("Content-Type: imagen/png,image/jpg");
+                $rutaImagen = $respuesta["cliente_archivoRuta"];
+                
+                include_once __DIR__ . './../contenido/';
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    });
 
     function moveUploadedFile($directory, UploadedFile $uploadedFile)
     {
