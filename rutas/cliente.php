@@ -347,10 +347,9 @@ use Slim\Http\UploadedFile;
 
             if ( $respuesta )
             {
-                header("Content-Type: imagen/png,image/jpg");
-                $rutaImagen = $respuesta["cliente_archivoRuta"];
-                
-                include_once __DIR__ . './../contenido/';
+                header("Content-Type: image/png");
+
+                include "./../wwwroot/imagenes/picturesClientes/e87115fef09c59f0.png";
             }
         } catch (\Throwable $th) {
             //throw $th;
