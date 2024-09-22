@@ -337,6 +337,7 @@ use Slim\Http\UploadedFile;
     $app->get("/clientes/imagenes/{id}", function(Request $request, Response $response, $args) {
         global $db;
         $id = $request->getAttribute("id");
+        $data = $response->getBody();
         try {
             $sql = "SELECT cliente_archivoRuta FROM Cliente WHERE cliente_id = ?";
 
@@ -347,9 +348,28 @@ use Slim\Http\UploadedFile;
 
             if ( $respuesta )
             {
-                header("Content-Type: image/png");
+                $clienteArchivoRuta = $respuesta["cliente_archivoRuta"];
+                $rutaArchivo = "./../$clienteArchivoRuta";
 
-                include "./../wwwroot/imagenes/picturesClientes/e87115fef09c59f0.png";
+                if ( file_exists($rutaArchivo) )
+                {
+                    //vamos a tener que enviar la imagen como respuesta... 
+                    $imagen = file_get_contents($rutaArchivo);
+                    
+                    if ( $imagen )
+                    {
+                        $data->write($imagen);
+                        return $response->withHeader('Content-Type', mime_content_type($rutaArchivo));
+                    }
+                    
+                    $data->write(json_encode(['respuesta' => 'error procesar imagen']));
+                    return $response->withStatus(500);
+                    
+                }
+                else {
+                    $data->write(json_encode(['respuesta' => 'imagen no encontrada']));
+                    return $response->withStatus(404);
+                }
             }
         } catch (\Throwable $th) {
             //throw $th;
