@@ -3,6 +3,7 @@
     use Psr\Http\Message\ServerRequestInterface as Request;
 
     require '../vendor/autoload.php';
+    require_once './../tools/MoverImagenesTools.php';
 
     $app->Get('/vehiculos', function(Request $request, Response $response, $args) { 
         global $db;
@@ -68,6 +69,7 @@
         try {
             $datos = $request->getParsedBody();
             $imagenVehiculo = $request->getUploadedFiles();
+           
 
             if ( isset($datos['datos']) && isset($imagenVehiculo['imagenVehiculo']))
             {
@@ -91,7 +93,6 @@
                         //generaremos un codigo para el vehiculo
                         $codigo = md5(rand(0,10000));
                         $codigo = password_hash($codigo, PASSWORD_BCRYPT);
-    
                         $data = json_decode($datos["datos"], true);
 
                         //code...
@@ -116,22 +117,43 @@
                             $consulta->bindParam(4, $data["vehiculo_color"] );
                             $consulta->bindParam(5, $data["vehiculo_ano"] );
                             $consulta->bindParam(6, $data["vehiculo_precio"]);
-                            $consulta->bindParam(6, $data["vehiculo_puertas"]);
+                            $consulta->bindParam(7, $data["vehiculo_puertas"]);
                             $consulta->bindParam(8, $data["vehiculo_cantidad"] );
                             $consulta->execute();
     
-                            // return $response->withStatus(200);
+                            
                         } catch (\Throwable $th) {
-                            $data->write(json_encode(['respuesta' => $th]));
+                            $cuerpo->write(json_encode(['respuesta' => $th->getMessage()]));
                             return $response->withStatus(500);
                         }
-                                    
                         
-                        //en este caso vamos a registrar una imagen...
-                        $sql = "INSERT INTO ImagenVehiculo(imgVH_ruta, imgVH_fechaSubido) VALUES(:ruta, :fecha)";
-                        $consulta = $db->prepare($sql);
-                        $consulta->bindParam(1, "");
-                        $consulta->bindParam(2, "");
+                        $tiempo = new DateTime($timezone ="America/Guayaquil");
+                        $tiempo = $tiempo->format('Y-m-d H:i:s');
+
+                        foreach($imagenVehiculo["imagenVehiculo"] as $item)
+                        {
+                            try {
+                                //code...
+                                $carpetaDestino = "./../wwwroot/imagenes/picturesAutos";
+                                $resultadoMoverArchivo = moveUploadedFile($carpetaDestino, $item);
+                                $carpetaDestino = "wwwroot/imagenes/picturesAutos/$resultadoMoverArchivo";
+    
+                                $sql = "INSERT INTO ImagenVehiculo(imgVH_ruta, imgVH_fechaSubido, imgVH_codigoVehiculo) VALUES(:ruta, :fecha, :codigo)";
+                                $consulta = $db->prepare($sql);
+                                //en este caso vamos a registrar una imagen...
+                                $consulta->bindParam(1, $carpetaDestino);
+                                $consulta->bindParam(2, $tiempo);
+                                $consulta->bindParam(3, $codigo);
+                                $consulta->execute();
+                            } catch (\Throwable $th) {
+                                //throw $th;
+                                $cuerpo->write(json_encode(['respuesta' => $th->getMessage()]));
+                                return $response->withStatus(500);
+                            }
+                        }
+
+                        $cuerpo->write(json_encode(['respuesta' => 'Registrado Correctamente']));
+                        return $response->withStatus(200);
                     }
 
                     $cuerpo->write(json_encode(['respuesta' => 'Tipo imagenes erroneo enviado']));
@@ -148,7 +170,7 @@
             
         } catch (\Throwable $th) {
             //throw $th;
-            $data->write(json_encode(['respuesta' => $th]));
+            $cuerpo->write(json_encode(['respuesta' => $th->getMessage()]));
             return $response->withStatus(500);
         }
     });

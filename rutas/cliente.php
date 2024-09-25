@@ -7,6 +7,7 @@ use Slim\Http\UploadedFile;
 
     require '../vendor/autoload.php';
     require '../models/Cliente.php';
+    require './../tools/MoverImagenesTools.php';
 
     $app->Get('/clientes', function(Request $request, Response $response, $args) { 
         global $db;
@@ -89,10 +90,10 @@ use Slim\Http\UploadedFile;
                 {
                     if ( $tamanoImagen <= $bytesMaximo && $tipoImagen === "image/png" )
                     {
-                        $carpetaDestino = $_SERVER['DOCUMENT_ROOT'] . "/wwwroot/imagenes/picturesClientes";
+                        $carpetaDestino = "./../wwwroot/imagenes/picturesClientes";
                         $resultadoMoverArchivo = moveUploadedFile($carpetaDestino, $imagenCliente["imagenCliente"]);
     
-                        $carpetaDestino = "/public/wwwroot/picturesClientes/$resultadoMoverArchivo";
+                        $carpetaDestino = "wwwroot/imagenes/picturesClientes/$resultadoMoverArchivo";
                         #vamos a guardar a continuacion los datos en nuestra base de datos.
     
                         $sql =  "INSERT INTO Cliente(cliente_usuario, cliente_correo, cliente_celular, cliente_genero, cliente_provincia, cliente_archivoRuta, cliente_contrasena, cliente_rol, cliente_cedula)";
@@ -258,11 +259,10 @@ use Slim\Http\UploadedFile;
 
                         if ( $tamanoImagen <= $bytesMaximo && $tipoImagen === "image/png" )
                         {
-
-                            $carpetaDestino = $_SERVER['DOCUMENT_ROOT'] . "/wwwroot/imagenes/picturesClientes";
+                            $carpetaDestino = "./../wwwroot/imagenes/picturesClientes";
                             $resultadoMoverArchivo = moveUploadedFile($carpetaDestino, $imagenCliente["imagenCliente"]);
         
-                            $carpetaDestino = "/public/wwwroot/picturesClientes/$resultadoMoverArchivo";
+                            $carpetaDestino = "wwwroot/imagenes/picturesClientes/$resultadoMoverArchivo";
 
                             $sql =  "UPDATE Cliente SET cliente_usuario = ?, cliente_correo = ?, cliente_celular = ?, cliente_genero = ?, cliente_provincia = ?, cliente_archivoRuta = ?, cliente_contrasena = ?, cliente_rol = ?, cliente_cedula = ? WHERE cliente_id = ?";
                 
@@ -282,7 +282,6 @@ use Slim\Http\UploadedFile;
                             $cuerpo->write(json_encode(['respuesta' => "actualizado correctamente"]));
                             return $response->withStatus(200);
                         }
-
 
                     }
 
@@ -376,16 +375,6 @@ use Slim\Http\UploadedFile;
         }
     });
 
-    function moveUploadedFile($directory, UploadedFile $uploadedFile)
-    {
-        $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
-        $basename = bin2hex(random_bytes(8)); // see http://php.net/manual/en/function.random-bytes.php
-        $filename = sprintf('%s.%0.8s', $basename, $extension);
-
-        $uploadedFile->moveTo($directory . DIRECTORY_SEPARATOR . $filename);
-
-        return $filename;
-    }
 
     function VerificarExistenciaDeDatos($db, $cedula, $correo)
     {
