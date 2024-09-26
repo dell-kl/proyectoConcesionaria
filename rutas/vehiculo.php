@@ -299,19 +299,46 @@
     });
 
     
-    $app->get('/vehiculos/recurso/imagenes', function(Request $request, Response $response, $args){
+    $app->get('/vehiculos/imagenes/{codigoVehiculo:.+}', function(Request $request, Response $response, $args){
         
-        $codigo = $request->getParsedBody()["codigo"];
+        $codigo = $request->getAttribute("codigoVehiculo");
         
         $cuerpo = $response->getBody();
 
         try {
+
             $data = traerImagenVehiculo($codigo);
-            var_dump($data);
+            
+            if ( $data )
+            {
+                $rutaImagen = $data["imgVH_ruta"];
+                $rutaCompleta = "./../$rutaImagen";
+                
+                if ( file_exists($rutaCompleta ))
+                {
+                    $imagen = file_get_contents($rutaCompleta);
+
+                    if ( $imagen )
+                    {
+                        $cuerpo->write($imagen);
+                        return $response->withHeader('Content-Type', mime_content_type($rutaCompleta));
+                    }
+
+                    $cuerpo->write(json_encode(['respuesta' => "error procesar imagen"]));
+                    return $response->withStatus(500);
+                }
+
+                $cuerpo->write(json_encode(['respuesta' => "imagen no encontrada"]));
+                return $response->withStatus(404);
+            }
+            
+            $cuerpo->write(json_encode(['respuesta' => "no encontro datos"]));
+            return $response->withStatus(404);
         } catch (\Throwable $th) {
             $cuerpo->write(json_encode(['respuesta' => "error servidor : " . $th->getMessage()]));
-            $response->withStatus(500);
+            return $response->withStatus(500);
         }
+
     });
 
     function traerImagenVehiculo($codigoVehiculo)
