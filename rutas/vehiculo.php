@@ -306,7 +306,7 @@
         $cuerpo = $response->getBody();
 
         try {
-
+            
             $data = traerImagenVehiculo($codigo);
             
             if ( $data )
