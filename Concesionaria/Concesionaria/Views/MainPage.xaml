@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Concesionaria.MainPage"
+             xmlns:local="clr-namespace:Concesionaria.ModelViews"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel></local:MainPageViewModel>
+    </ContentPage.BindingContext>
+    
+    <RelativeLayout>
+        <Image Aspect="AspectFill" Source="imagenLogin.jpg"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"></Image>
+
+        <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+
+
+        <Frame Opacity="0.4"
+               BackgroundColor="black"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"></Frame>
+
+
+        <Frame BackgroundColor="#EABE1D"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}">
+            <Label Text="Concesionaria Mildar"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   FontSize="Large"
+                   HorizontalOptions="Center"></Label>
+        </Frame>
+
+        <StackLayout
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}">
+
+
+            <Frame Padding="0" CornerRadius="100" WidthRequest="100" HorizontalOptions="Center">
+                <Image Source="EZEFOOD.png"/>
+            </Frame>
+            <Label 
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                    TextColor="White"
+                    FontSize="35"
+                   TextTransform="Uppercase" 
+                   Padding="0,20,0,0" 
+                   Text="Gestion Proceso"
+                   FontAttributes="Bold"></Label>
+            <Label  
+                   Padding="0,15,0,0" 
+                   TextColor="White"
+                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center" 
+                   Text="Empieza gestionando uno de los proceso a continuacion"></Label>
+
+
+            <Grid HorizontalOptions="Center" Margin="0,40,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90"></RowDefinition>
+                    <RowDefinition Height="90"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="180"></ColumnDefinition>
+                    <ColumnDefinition Width="180"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button Command="{Binding menu}" CommandParameter="clientes" CornerRadius="10" Grid.Column="0" Grid.Row="0" WidthRequest="200" BackgroundColor="#DC9122" FontAttributes="Bold" TextColor="White" Text="Agregar Clientes"></Button>
+                <Button Command="{Binding menu}" CommandParameter="vehiculos" CornerRadius="10" Grid.Column="1" Grid.Row="0" WidthRequest="200" BackgroundColor="#EC6E16" FontAttributes="Bold" TextColor="White" Text="Agregar Vehiculos"></Button>
+                <Button Command="{Binding menu}" CommandParameter="asignarVehiculo" CornerRadius="10" Grid.Column="0" Grid.Row="1" WidthRequest="200" BackgroundColor="#DCC022" FontAttributes="Bold" TextColor="White" Text="Asignar Vehiculos"></Button>
+                <Button Command="{Binding menu}" CommandParameter="verificarAsignacion" CornerRadius="10" Grid.Column="1" Grid.Row="1" WidthRequest="200" BackgroundColor="#DC9122" FontAttributes="Bold" TextColor="White" Text="Verificar Asignacion"></Button>
+            </Grid>
+        </StackLayout>
+
+    </RelativeLayout>
+
+
+    
+</ContentPage>

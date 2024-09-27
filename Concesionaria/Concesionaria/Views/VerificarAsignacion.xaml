@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Concesionaria.Views.VerificarAsignacion"
+             xmlns:local="clr-namespace:Concesionaria.ModelViews"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <local:VerificarAsignacionViewModel/>
+    </ContentPage.BindingContext>
+    
+    <RelativeLayout>
+        <Image Aspect="AspectFill" Source="imagenLogin.jpg"
+              RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"></Image>
+
+        <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
+             RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+
+
+        <Frame Opacity="0.4"
+              BackgroundColor="black"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+              RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"></Frame>
+
+        <StackLayout
+            HorizontalOptions="Center"
+            VerticalOptions="Fill"
+            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}">
+
+            <StackLayout>
+
+                <StackLayout 
+                   Padding="10"
+                   Orientation="Horizontal"
+                   BackgroundColor="#EABE1D"
+                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}">
+
+                    <Frame Padding="0" WidthRequest="50" CornerRadius="100">
+                        <ImageButton Command="{Binding Retornar}" Source="EZEFOOD.png"/>
+                    </Frame>
+                    <Label Text="Concesionaria Mildar"
+                          VerticalTextAlignment="Center"
+                          TextColor="White"
+                          FontAttributes="Bold"
+                          FontSize="Large"
+                          HorizontalOptions="EndAndExpand"></Label>
+                </StackLayout>
+
+
+                <Label 
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center"
+                       TextColor="White"
+                       FontSize="35"
+                      TextTransform="Uppercase" 
+                      Padding="0,20,0,0" 
+                      Text="Verificar Asignaciones"
+                    HorizontalTextAlignment="Center"
+                      FontAttributes="Bold"></Label>
+                <Label  
+                      Padding="0,15,0,0" 
+                      TextColor="White"
+                      RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+                      RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                      VerticalOptions="Center" 
+                      HorizontalOptions="Center" 
+                      Text="Puedes verificar las asignaciones de vehiculos"></Label>
+
+
+                <StackLayout
+                    VerticalOptions="Fill" Padding="0,40,0,0">
+
+                    <Grid Padding="10,0" VerticalOptions="Fill">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="85"></RowDefinition>
+                            <RowDefinition Height="85"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="180"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Label TextColor="White" FontSize="17" Text="Buscar por cedula"></Label>
+                            <Frame CornerRadius="10" Opacity="0.4" BackgroundColor="White" Padding="0">
+                                <Entry Keyboard="Numeric" Text="{Binding datoBuscar}" TextTransform="Default" TextColor="#2B2929" Placeholder="Busca por la cedula del cliente"/>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Button CornerRadius="8" Command="{Binding buscar}"  WidthRequest="200" BackgroundColor="#DC9122" FontAttributes="Bold" TextColor="White" Text="Buscar"></Button>
+                        </StackLayout>
+
+                    </Grid>
+                </StackLayout>
+
+            </StackLayout>
+
+            <Label FontSize="20" Margin="10,0" FontAttributes="Bold" Text="Listado de autos asignados" TextColor="White"></Label>
+
+            <CollectionView Margin="10,0"  ItemsSource="{Binding Resumen}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <!-- Nombre -->
+
+                            <Frame Padding="0" Margin="0,0,0,4" CornerRadius="10">
+                                <StackLayout
+                                                BackgroundColor="#EC6E16" 
+                                                 Padding="25"
+                                                 >
+                                    <Label  
+                                            FontSize="24"
+                                            Text="{Binding cliente_usuario}"
+                                            TextColor="Black" 
+                                            HorizontalOptions="Center" />
+                                    <Label  
+                                            FontSize="24"
+                                            Text="{Binding cliente_cedula}"
+                                            TextColor="Black" 
+                                            HorizontalOptions="Center" />
+                                    <Label  
+                                            FontSize="24"
+                                            Text="{Binding vehiculo_marca}"
+                                            TextColor="Black" 
+                                            HorizontalOptions="Center" />
+                                    <Label  
+                                            FontSize="24"
+                                            Text="{Binding compra_matricula}"
+                                            TextColor="Black" 
+                                            HorizontalOptions="Center" />
+                                    <Label  
+                                            FontSize="24"
+                                            Text="{Binding compraDetalle_precio}"
+                                            TextColor="Black" 
+                                            HorizontalOptions="Center" />
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
+        
+
+        
+        
+    </RelativeLayout>
+
+
+</ContentPage>

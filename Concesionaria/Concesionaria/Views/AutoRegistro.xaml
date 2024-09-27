@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Concesionaria.Views.AutoRegistro"
+             xmlns:local="clr-namespace:Concesionaria.ModelViews"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <local:AutoRegistroViewModel></local:AutoRegistroViewModel>
+    </ContentPage.BindingContext>
+
+    <RelativeLayout>
+        <Image Aspect="AspectFill" Source="imagenLogin.jpg"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"></Image>
+
+        <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+
+
+        <Frame Opacity="0.4"
+               BackgroundColor="black"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"></Frame>
+
+
+        <StackLayout
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}">
+
+            <StackLayout 
+                Padding="10"
+                Orientation="Horizontal"
+                BackgroundColor="#EABE1D"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}">
+
+                <Frame Padding="0" WidthRequest="50" CornerRadius="100">
+                    <ImageButton Command="{Binding Retornar}" Source="EZEFOOD.png"/>
+                </Frame>
+                <Label Text="Concesionaria Mildar"
+                       VerticalTextAlignment="Center"
+               TextColor="White"
+               FontAttributes="Bold"
+               FontSize="Large"
+               HorizontalOptions="EndAndExpand"></Label>
+            </StackLayout>
+
+
+            <Label 
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                    TextColor="White"
+                    FontSize="35"
+                   TextTransform="Uppercase" 
+                   Padding="0,20,0,0" 
+                   Text="Registro Vehiculo"
+                   FontAttributes="Bold"></Label>
+            <Label  
+                   Padding="0,15,0,0" 
+                   TextColor="White"
+                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center" 
+                   Text="Puedes registrar a continuacion a tu vehiculo"></Label>
+
+            <ScrollView>
+                <Grid  Padding="10,0" HorizontalOptions="Fill" Margin="0,40,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="85"></RowDefinition>
+                        <RowDefinition Height="85"></RowDefinition>
+                        <RowDefinition Height="85"></RowDefinition>
+                        <RowDefinition Height="85"></RowDefinition>
+                        <RowDefinition Height="85"></RowDefinition>
+                        <RowDefinition Height="85"></RowDefinition>
+                        <RowDefinition Height="85"></RowDefinition>
+                        <!--<RowDefinition Height="85"></RowDefinition>-->
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label TextColor="White" FontSize="17" Text="Modelo Vehiculo"></Label>
+                        <Frame CornerRadius="10" Opacity="0.4" BackgroundColor="White" Padding="0">
+                            <Entry Text="{Binding vehiculo.vehiculo_modelo}" TextTransform="Default" TextColor="Black" Placeholder="Debes insertar un modelo del vehiculo"/>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label TextColor="White" FontSize="17" Text="Marca Vehiculo"></Label>
+                        <Frame CornerRadius="10" Opacity="0.4" BackgroundColor="White" Padding="0">
+                            <Entry Text="{Binding vehiculo.vehiculo_marca}" TextTransform="Default" TextColor="Black" Placeholder="Debes insertar una marca del vehiculo"/>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label TextColor="White" FontSize="17" Text="Color Vehiculo"></Label>
+                        <Frame CornerRadius="10" Opacity="0.4" BackgroundColor="White" Padding="0">
+                            <Entry Text="{Binding vehiculo.vehiculo_color}" TextTransform="Default" TextColor="Black" Placeholder="Debes insertar el color del vehiculo"/>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label TextColor="White" FontSize="17" Text="Año Vehiculo"></Label>
+                        <Frame CornerRadius="10" Opacity="0.4" BackgroundColor="White" Padding="0">
+                            <Entry Text="{Binding vehiculo.vehiculo_ano}" TextTransform="Default" TextColor="Black" Placeholder="Debes insertar el año del vehiculo"/>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label TextColor="White" FontSize="17" Text="Precio Vehiculo"></Label>
+                        <Frame CornerRadius="10" Opacity="0.4" BackgroundColor="White" Padding="0">
+                            <Entry Text="{Binding vehiculo.vehiculo_precio}" TextTransform="Default" TextColor="Black" Placeholder="Debes insertar precio del vehiculo"/>
+                        </Frame>
+                    </StackLayout>
+                    <!--<StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label TextColor="White" FontSize="17" Text="Foto Vehiculo"></Label>
+                        <Frame CornerRadius="10" Opacity="0.4" BackgroundColor="White" Padding="0">
+                            <Entry TextTransform="Default" TextColor="Black" Placeholder="Debes insertar foto del vehiculo"/>
+                        </Frame>
+                    </StackLayout>-->
+                    <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label TextColor="White" FontSize="17" Text="Puertas Vehiculo"></Label>
+                        <Frame CornerRadius="10" Opacity="0.4" BackgroundColor="White" Padding="0">
+                            <Entry Text="{Binding vehiculo.vehiculo_puertas}" TextTransform="Default" TextColor="Black" Placeholder="Debes insertar numero de puertas vehiculo"/>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Button CornerRadius="8" Command="{Binding registroAutoCommand}"  WidthRequest="200" BackgroundColor="#DC9122" FontAttributes="Bold" TextColor="White" Text="Registrar Vehiculo"></Button>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+            
+        </StackLayout>
+
+    </RelativeLayout>
+
+
+</ContentPage>

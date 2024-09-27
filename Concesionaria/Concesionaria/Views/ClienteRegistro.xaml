@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Concesionaria.Views.ClienteRegistro"
+             xmlns:localViewModel="clr-namespace:Concesionaria.ModelViews"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <localViewModel:ClienteRegistroViewModel/>
+    </ContentPage.BindingContext>
+       
+    <RelativeLayout>
+        <Image Aspect="AspectFill" Source="imagenLogin.jpg"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"></Image>
+
+        <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+
+
+        <Frame Opacity="0.4"
+               BackgroundColor="black"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"></Frame>
+
+
+
+        <StackLayout
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}">
+
+                <StackLayout 
+                Padding="10"
+                Orientation="Horizontal"
+                BackgroundColor="#EABE1D"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}">
+
+                <Frame Padding="0" WidthRequest="50" CornerRadius="100">
+                    <ImageButton Command="{Binding Retornar}" Source="EZEFOOD.png"/>
+                </Frame>
+                <Label Text="Concesionaria Mildar"
+                       VerticalTextAlignment="Center"
+               TextColor="White"
+               FontAttributes="Bold"
+               FontSize="Large"
+               HorizontalOptions="EndAndExpand"></Label>
+            </StackLayout>
+
+
+            <Label 
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                    TextColor="White"
+                    FontSize="35"
+                   TextTransform="Uppercase" 
+                   Padding="0,20,0,0" 
+                   Text="Registro Cliente"
+                   FontAttributes="Bold"></Label>
+            <Label  
+                   Padding="0,15,0,0" 
+                   TextColor="White"
+                   RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center" 
+                   Text="Puedes registrar a continuacion a tus clientes"></Label>
+
+            <ScrollView>
+                <Grid  Padding="10,0" HorizontalOptions="Fill" Margin="0,40,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="85"></RowDefinition>
+                        <RowDefinition Height="85"></RowDefinition>
+                        <RowDefinition Height="85"></RowDefinition>
+                        <RowDefinition Height="85"></RowDefinition>
+                        <RowDefinition Height="85"></RowDefinition>
+                        <RowDefinition Height="85"></RowDefinition>
+                        <RowDefinition Height="85"></RowDefinition>
+                       
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label TextColor="White" FontSize="17" Text="Nombres Usuario"></Label>
+                        <Frame CornerRadius="10" Opacity="0.4" BackgroundColor="White" Padding="0">
+                            <Entry Keyboard="Text" Text="{Binding cliente.cliente_usuario}" TextTransform="Default" TextColor="Black" Placeholder="Debes insertar los nombre del cliente"/>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label TextColor="White" FontSize="17" Text="Correo Usuario"></Label>
+                        <Frame CornerRadius="10" Opacity="0.4" BackgroundColor="White" Padding="0">
+                            <Entry Keyboard="Email" Text="{Binding cliente.cliente_correo}" TextTransform="Default" TextColor="Black" Placeholder="Debes insertar correo electronico del cliente"/>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label TextColor="White" FontSize="17" Text="Celular Usuario"></Label>
+                        <Frame CornerRadius="10" Opacity="0.4" BackgroundColor="White" Padding="0">
+                            <Entry Keyboard="Numeric" Text="{Binding cliente.cliente_celular}" TextTransform="Default" TextColor="Black" Placeholder="Debes insertar un numero celular del cliente"/>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label TextColor="White" FontSize="17" Text="Genero Usuario"></Label>
+                        <Frame CornerRadius="10" Opacity="0.4" BackgroundColor="White" Padding="0">
+                            <Picker
+                                TextColor="Black"
+                                x:Name="OptionGenero"
+                                SelectedItem="{Binding cliente.cliente_genero}"
+                                Title="Seleccionar genero">
+                                <Picker.Items>
+                                    <x:String>Femenino</x:String>
+                                    <x:String>Masculino</x:String>
+                                </Picker.Items>
+                            </Picker>
+                            <!--   <Entry Text="{Binding cliente.cliente_genero}" TextTransform="Default" TextColor="Black" Placeholder="Debes insertar los nombre del cliente"/>-->
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label TextColor="White" FontSize="17" Text="Provincia Usuario"></Label>
+                        <Frame CornerRadius="15" Opacity="0.4" BackgroundColor="White" Padding="0">
+                            <Picker
+                                TextColor="Black"
+                                x:Name="OptionProvincia"
+                                SelectedItem="{Binding cliente.cliente_provincia}"
+                                Title="Seleccionar provincia">
+                                <Picker.Items>
+                                    <x:String>Pichincha</x:String>
+                                </Picker.Items>
+                            </Picker>
+                            <!--  <Entry Text="{Binding cliente.cliente_provincia}" TextTransform="Default" TextColor="Black" Placeholder="Debes insertar los nombre del cliente"/>-->
+                        </Frame>
+                    </StackLayout>
+                    <!--<StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label TextColor="White" FontSize="17" Text="Foto Usuario"></Label>
+                        <Frame CornerRadius="10" Opacity="0.7" BackgroundColor="White" Padding="0">
+                            <Button Clicked="subirImagen" FontAttributes="Bold" TextColor="White" BackgroundColor="#EA760F" Text="Subir Imagen"></Button>
+                            
+                            <Picker
+                                x:Name="OptionFileArchive"
+                                Title="Seleccionar Imagen Cliente">
+                                
+                            </Picker>
+                             <Entry Text="{Binding cliente.cliente_archivoRuta}" TextTransform="Default" TextColor="Black" Placeholder="Debes insertar los nombre del cliente
+                        </Frame>
+                    </StackLayout>"/>-->
+                    <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Label TextColor="White" FontSize="17" Text="Cedula Usuario"></Label>
+                        <Frame CornerRadius="10" Opacity="0.4" BackgroundColor="White" Padding="0">
+                            <Entry Keyboard="Numeric" Text="{Binding cliente.cliente_cedula}" TextTransform="Default" TextColor="Black" Placeholder="Debes insertar los nombre del cliente"/>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Button Command="{Binding BotonRegistrarCliente}" CornerRadius="8"  WidthRequest="200" BackgroundColor="#DC9122" FontAttributes="Bold" TextColor="White" Text="Registrar Cliente"></Button>
+                    </StackLayout>
+
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+
+    </RelativeLayout>
+
+    
+        
+</ContentPage>
