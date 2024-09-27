@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit6065cb9ed488c948c0abb6902b7b0e0b
+class ComposerStaticInit7f977765b856096aea12cf8ed838be28
 {
     public static $files = array (
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
@@ -19,6 +19,10 @@ class ComposerStaticInit6065cb9ed488c948c0abb6902b7b0e0b
         array (
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
+        ),
+        'M' => 
+        array (
+            'Models\\' => 7,
         ),
         'I' => 
         array (
@@ -46,6 +50,10 @@ class ComposerStaticInit6065cb9ed488c948c0abb6902b7b0e0b
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'Models\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/models',
         ),
         'Interop\\Container\\' => 
         array (
@@ -78,10 +86,10 @@ class ComposerStaticInit6065cb9ed488c948c0abb6902b7b0e0b
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit6065cb9ed488c948c0abb6902b7b0e0b::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit6065cb9ed488c948c0abb6902b7b0e0b::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit6065cb9ed488c948c0abb6902b7b0e0b::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit6065cb9ed488c948c0abb6902b7b0e0b::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit7f977765b856096aea12cf8ed838be28::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit7f977765b856096aea12cf8ed838be28::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit7f977765b856096aea12cf8ed838be28::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit7f977765b856096aea12cf8ed838be28::$classMap;
 
         }, null, ClassLoader::class);
     }

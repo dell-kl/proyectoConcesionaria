@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'dennis.p/api-concesionaria',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '5223f7145218ad05748241cff4767e4919520383',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -20,9 +20,9 @@
             'dev_requirement' => false,
         ),
         'dennis.p/api-concesionaria' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '5223f7145218ad05748241cff4767e4919520383',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

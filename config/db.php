@@ -7,6 +7,8 @@
         private string $user = "sa";
         private string $pass = "sa12345";
 
+        
+
         public function conexion_baseDatos()
         {
             $conexion = "sqlsrv:Server=$this->host;Database=$this->db";
