@@ -9,3 +9,6 @@ namespace Concesionaria.Resource
         public static string ip = "192.168.100.85";
     }
 }
+
+
+

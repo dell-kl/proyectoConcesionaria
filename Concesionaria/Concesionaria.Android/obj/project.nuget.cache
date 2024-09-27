@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YpthpsQqw7g=",
+  "dgSpecHash": "NnCnf8zL3Ac=",
   "success": true,
-  "projectFilePath": "C:\\Users\\dennis.P\\Documents\\sinned\\movil\\PROYECTOS\\Concesionaria\\Concesionaria\\Concesionaria.Android\\Concesionaria.Android.csproj",
+  "projectFilePath": "C:\\xampp\\htdocs\\concesionariaMovil\\Concesionaria\\Concesionaria.Android\\Concesionaria.Android.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dennis.P\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\8.0.0\\microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512",
     "C:\\Users\\dennis.P\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",

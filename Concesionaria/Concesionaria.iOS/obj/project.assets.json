@@ -2289,11 +2289,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dennis.P\\Documents\\sinned\\movil\\PROYECTOS\\Concesionaria\\Concesionaria\\Concesionaria.iOS\\Concesionaria.iOS.csproj",
+      "projectUniqueName": "C:\\xampp\\htdocs\\concesionariaMovil\\Concesionaria\\Concesionaria.iOS\\Concesionaria.iOS.csproj",
       "projectName": "Concesionaria.iOS",
-      "projectPath": "C:\\Users\\dennis.P\\Documents\\sinned\\movil\\PROYECTOS\\Concesionaria\\Concesionaria\\Concesionaria.iOS\\Concesionaria.iOS.csproj",
+      "projectPath": "C:\\xampp\\htdocs\\concesionariaMovil\\Concesionaria\\Concesionaria.iOS\\Concesionaria.iOS.csproj",
       "packagesPath": "C:\\Users\\dennis.P\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dennis.P\\Documents\\sinned\\movil\\PROYECTOS\\Concesionaria\\Concesionaria\\Concesionaria.iOS\\obj\\",
+      "outputPath": "C:\\xampp\\htdocs\\concesionariaMovil\\Concesionaria\\Concesionaria.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -2314,8 +2314,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "C:\\Users\\dennis.P\\Documents\\sinned\\movil\\PROYECTOS\\Concesionaria\\Concesionaria\\Concesionaria\\Concesionaria.csproj": {
-              "projectPath": "C:\\Users\\dennis.P\\Documents\\sinned\\movil\\PROYECTOS\\Concesionaria\\Concesionaria\\Concesionaria\\Concesionaria.csproj"
+            "C:\\xampp\\htdocs\\concesionariaMovil\\Concesionaria\\Concesionaria\\Concesionaria.csproj": {
+              "projectPath": "C:\\xampp\\htdocs\\concesionariaMovil\\Concesionaria\\Concesionaria\\Concesionaria.csproj"
             }
           }
         }

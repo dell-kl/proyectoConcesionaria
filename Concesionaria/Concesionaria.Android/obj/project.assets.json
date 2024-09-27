@@ -3882,11 +3882,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dennis.P\\Documents\\sinned\\movil\\PROYECTOS\\Concesionaria\\Concesionaria\\Concesionaria.Android\\Concesionaria.Android.csproj",
+      "projectUniqueName": "C:\\xampp\\htdocs\\concesionariaMovil\\Concesionaria\\Concesionaria.Android\\Concesionaria.Android.csproj",
       "projectName": "Concesionaria.Android",
-      "projectPath": "C:\\Users\\dennis.P\\Documents\\sinned\\movil\\PROYECTOS\\Concesionaria\\Concesionaria\\Concesionaria.Android\\Concesionaria.Android.csproj",
+      "projectPath": "C:\\xampp\\htdocs\\concesionariaMovil\\Concesionaria\\Concesionaria.Android\\Concesionaria.Android.csproj",
       "packagesPath": "C:\\Users\\dennis.P\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dennis.P\\Documents\\sinned\\movil\\PROYECTOS\\Concesionaria\\Concesionaria\\Concesionaria.Android\\obj\\",
+      "outputPath": "C:\\xampp\\htdocs\\concesionariaMovil\\Concesionaria\\Concesionaria.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -3907,8 +3907,8 @@
       "frameworks": {
         "monoandroid13.0": {
           "projectReferences": {
-            "C:\\Users\\dennis.P\\Documents\\sinned\\movil\\PROYECTOS\\Concesionaria\\Concesionaria\\Concesionaria\\Concesionaria.csproj": {
-              "projectPath": "C:\\Users\\dennis.P\\Documents\\sinned\\movil\\PROYECTOS\\Concesionaria\\Concesionaria\\Concesionaria\\Concesionaria.csproj"
+            "C:\\xampp\\htdocs\\concesionariaMovil\\Concesionaria\\Concesionaria\\Concesionaria.csproj": {
+              "projectPath": "C:\\xampp\\htdocs\\concesionariaMovil\\Concesionaria\\Concesionaria\\Concesionaria.csproj"
             }
           }
         }
